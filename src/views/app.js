@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Table from './table';
 import styles from '../styles/app';
 
 function App(props) {
   return (
     <div className={styles.layout}>
-      <div className={styles.topLayout}>
-        <div className={styles.main}>
-          {props.children}
-        </div>
-      </div>
+      <Table />
     </div>
   );
 }
