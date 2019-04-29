@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "protocol": "inspector",
+            "request": "launch",
+            "console":"integratedTerminal",
+            "name": "scalyr debugger",
+            "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v8.6.0/bin/node",
+            "program": "${workspaceFolder}/server.entry.index.js",
+        }
+    ]
+}
