@@ -5,13 +5,14 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import Routes from './routes';
 import configureStore from './store';
 import styles from './styles/root';
+import { getUsers } from './action-creators/users';
 
 const store = configureStore({});
 const history = syncHistoryWithStore(browserHistory, store);
 
 class Root extends Component {
   componentDidMount() {
-
+    store.dispatch(getUsers());
   }
 
   render() {
