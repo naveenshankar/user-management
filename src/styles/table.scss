@@ -1,0 +1,16 @@
+.tableContainer {
+    width: 100%;
+    .title{
+        font-weight: bold;
+    }
+    .heading{
+        background-color: gray;
+        height: 1.25rem;
+    }
+    .userAlign,
+    .accessAlign,
+    .actionsAlign{
+        display: inline-block;
+        width: 30%;
+    }
+}

@@ -1,1 +1,4 @@
 export const RETRIEVE_USERS = 'RETRIEVE_USERS';
+export const REVOKE_INVITE = 'REVOKE_INVITE';
+export const RESEND_INVITE = 'RESEND_INVITE';
+export const REVOKE_USERS = 'REVOKE_USERS';

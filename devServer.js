@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import webpack from 'webpack';
 import config from './webpack.config.dev';
 import fetch from 'isomorphic-fetch';
+import q from 'q';
+import backend from './bin/backend';
+import window from 'window-or-global';
 
 const PORT = 8050;
 const app = express();
@@ -23,9 +26,48 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/users', async function (req, res) {
-  const wait = (ts) => new Promise((resolve) => setTimeout(()=>resolve([{},{},{},{}]), ts) );
-  const feeds = await wait(2000);
-  res.json(feeds);
+  try{
+    backend(window, q);
+    const endPoint = window.scalyrBackend;
+    const users = await endPoint.getUsers();
+    res.json(users);
+  } catch(e) {
+    res.json([{}]);
+  }
+});
+
+
+app.get('/api/users/resendInvite', async function (req, res) {
+  try{
+    backend(window, q);
+    const endPoint = window.scalyrBackend;
+    const users = await endPoint.resendInvite();
+    res.json(users);
+  } catch(e) {
+    res.json([{}]);
+  }
+});
+
+app.get('/api/users/revokeAccess', async function (req, res) {
+  try{
+    backend(window, q);
+    const endPoint = window.scalyrBackend;
+    const users = await endPoint.revokeAccess();
+    res.json(users);
+  } catch(e) {
+    res.json([{}]);
+  }
+});
+
+app.get('/api/users/revokeInvite', async function (req, res) {
+  try{
+    backend(window, q);
+    const endPoint = window.scalyrBackend;
+    const users = await endPoint.revokeAccess();
+    res.json(users);
+  } catch(e) {
+    res.json([{}]);
+  }
 });
 
 const serverStartup = (err) => {
